@@ -41,7 +41,7 @@ app.post('/api/shorten', function(req, res){
 	Url.findOne({long_url: longUrl}, function (err, doc){
 	if (doc)
 	{
-		console.log("longUrl" + longUrl + " is existed");
+		console.log("longUrl: " + longUrl + " is existed");
 	// Yes: 直接编码之后发送
 	 	shortUrl = config.webhost + base58.encode(doc._id);
 	 	res.send({'shortUrl': shortUrl});
@@ -49,7 +49,7 @@ app.post('/api/shorten', function(req, res){
 	// No： 先保存长URl，然后编码之后发送  
 	else 
 	{
-		console.log("longUrl is not existed");
+		console.log("longUrl: " + longUrl +"is not existed");
 	 	var newUrl = Url({
 	    long_url: longUrl
 	 	});

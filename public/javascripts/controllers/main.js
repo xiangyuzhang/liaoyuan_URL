@@ -1,14 +1,15 @@
 angular.module('Controller', [])
 	.controller('mainController', ['$log','$scope', '$http','Shortener', function($log, $scope, $http, Shortener){
-		$log.debug("shorten button react");
-		$scope.formData = {};
+		
 		$scope.UrlShortener = function(){
-			if($scope.formData.text != undefined){
-				Shortener.create($scope.formData).
-				success(function(){
-					$scope.formData = {};
-					$log.debug("acqure long_url = " + $scope.formData.text);
-				});
+			$log.debug("acqure long_url = " + $scope.long_URL.url);
+			
+			if($scope.long_URL.url != undefined){
+				Shortener.create($scope.long_URL)
+					.success(function(){
+						$log.debug("call Shortener success");
+						$log.debug("long_URL = " + $scope.long_URL.url);
+					})
 			}
 		};
 	}]);

@@ -37,10 +37,12 @@
 					<h4>Xiangyu Zhang</h4>
             			<div class="col-lg-12">
               				<div class="input-group input-group-lg">
-								<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+								<input type="text" class="form-control input-lg text-center" placeholder="Paste a link" ng-model="long_URL.url">
 								<span class="input-group-btn">
 								<button class = "btn btn-shorten" type ="submit" ng-click="UrlShortener()">SHORTEN</button>				
 								</span>
+								<br>
+								<p>form = {{long_URL}}</p>
 							</div>
 						</div>
 
