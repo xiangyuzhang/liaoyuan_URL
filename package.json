@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/xiangyuzhang/liaoyuan_URL/issues"
   },
-  "homepage": "https://github.com/xiangyuzhang/liaoyuan_URL#readme"
+  "homepage": "https://github.com/xiangyuzhang/liaoyuan_URL#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
