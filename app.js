@@ -7,6 +7,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
 var config = require('./config');
+var Url = require('./models/url');
+var base58 = require('./base58.js');
 // *部署资源
 // * 1 连接数据库
 mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
@@ -32,15 +34,53 @@ app.get('/',function(req, res){
 app.post('/api/shorten', function(req, res){
 	// 在响应函数里面执行
 	// 1, 获取从前端而来的长URL
-	// 2, 编码长URL
-	// 3，将长URL存入数据库
+	var longUrl = req.body.url;
+	var shortUrl = '';
+	// 2 检查是否URl已经存储?
+	Url.findOne({long_url: longUrl}, function (err, doc){
+	if (doc)
+	{
+	// Yes: 直接编码之后发送
+	 	shortUrl = config.webhost + base58.encode(doc._id);
+	 	res.send({'shortUrl': shortUrl});
+	}
+	// No： 先保存长URl，然后编码之后发送  
+	else 
+	{
+	 	var newUrl = Url({
+	    long_url: longUrl
+	 	});
+	 	newUrl.save(function(err) {
+	    if (err){
+	      console.log(err);
+	    }
+
+	    shortUrl = config.webhost + base58.encode(newUrl._id);
+
+	    res.send({'shortUrl': shortUrl});
+	 	});
+	}
+
+	});
 });
 // 三，响应短连接的请求，get
 app.get('/:short_url', function(req,res){
 	// 在响应函数里面执行
-	// 1，查询数据库是否存在这样的short_url
-	// 2，解码短URL
-	// 3，重定向
+	// 1, 先解码
+	var base58 = req.params.short_url;
+	var id = base58.decode(base58Id);
+	// 2，查询数据库是否存在这样的long_url ?
+	Url.findOne({_id: id}, function (err, doc){
+		if(doc)
+		{	// yes, 重定向到长_url
+			res.redirect(doc.long_url);
+		}
+		else
+		{	// no, 重定向到liaoyuan.io
+			res.redirect(config.liaoyuan);
+		}
+	});
+
 });
 
 
