@@ -1,0 +1,19 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "This is a interview project from Liaoyuan",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiangyuzhang/liaoyuan_URL.git"
+  },
+  "author": "XiangyuZhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiangyuzhang/liaoyuan_URL/issues"
+  },
+  "homepage": "https://github.com/xiangyuzhang/liaoyuan_URL#readme"
+}
