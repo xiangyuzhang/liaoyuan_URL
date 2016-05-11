@@ -9,6 +9,10 @@
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="css/styles.css" rel="stylesheet">
+  <script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+  <script src = "javascripts/services/Shortener.js"></script>
+  <script src = "javascripts/controllers/main.js"></script>
+  <script src = "javascripts/core.js"></script>
 </head>
 <body>
 
@@ -29,7 +33,7 @@
               <div class="input-group input-group-lg">
                 <input id="url-field" type="text" class="form-control" placeholder="Paste a link...">
                 <span class="input-group-btn">
-                  <button class="btn btn-shorten" type="button">SHORTEN</button>
+                  <button type = 'submit' class="btn btn-shorten" ng-click = "UrlShortener()">SHORTEN</button>
                 </span>
               </div>
             </div>
