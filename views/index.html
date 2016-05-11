@@ -1,59 +1,56 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="Xiangyu">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-  <title>URL Shortener - coligo.io</title>
-  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="css/styles.css" rel="stylesheet">
-  <script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-  <script src = "javascripts/services/Shortener.js"></script>
-  <script src = "javascripts/controllers/main.js"></script>
-  <script src = "javascripts/core.js"></script>
+   <title>URL Shortener - coligo.io</title>
+
+	<!-- SCROLLS -->
+  	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<link href="css/styles.css" rel="stylesheet">
+
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="javascripts/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="javascripts/services/Shortener.js"></script> <!-- load our todo service -->
+	<script src="javascripts/core.js"></script> <!-- load our main application -->
+
 </head>
-<body>
 
-  <div class="site-wrapper">
 
-    <div class="site-wrapper-inner">
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="site-wrapper">
+		<div class = "site-wrapper-inner">
+			<div class = "main-container">
+				<div class = "inner cover">
+					<span class ="glyphicon glyphicon-link"></span>
 
-      <div class="main-container">
+					<h1>URL Shortener</h1>
+					<h4>Xiangyu Zhang</h4>
+            			<div class="col-lg-12">
+              				<div class="input-group input-group-lg">
+								<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+								<span class="input-group-btn">
+								<button class = "btn btn-shorten" type ="submit" ng-click="UrlShortener()">SHORTEN</button>				
+								</span>
+							</div>
+						</div>
 
-        <div class="inner cover">
-          <span class="glyphicon glyphicon-link"></span>
-          <h1>URL Shortener</h1>
-          <h4>coligo.io</h4>
+						<div class = "col-lg-12">
+							<div id = "link"></div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-          <div class="row">
-
-            <div class="col-lg-12">
-              <div class="input-group input-group-lg">
-                <input id="url-field" type="text" class="form-control" placeholder="Paste a link...">
-                <span class="input-group-btn">
-                  <button type = 'submit' class="btn btn-shorten" ng-click = "UrlShortener()">SHORTEN</button>
-                </span>
-              </div>
-            </div>
-
-            <div class="col-lg-12">
-              <div id="link"></div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="javascripts/shorten.js"></script>
 </body>
 </html>

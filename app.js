@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 设置RESTful API
 // 一，生成页面，get
-app.get('/',function(req, res){
+app.get('*',function(req, res){
 	// 在响应函数里面发送html资源
 	res.sendFile(path.join(__dirname, 'views/index.html'))
 });
@@ -34,12 +34,14 @@ app.get('/',function(req, res){
 app.post('/api/shorten', function(req, res){
 	// 在响应函数里面执行
 	// 1, 获取从前端而来的长URL
+	console.log("/api/short react");
 	var longUrl = req.body.url;
 	var shortUrl = '';
 	// 2 检查是否URl已经存储?
 	Url.findOne({long_url: longUrl}, function (err, doc){
 	if (doc)
 	{
+		console.log("longUrl" + longUrl + " is existed");
 	// Yes: 直接编码之后发送
 	 	shortUrl = config.webhost + base58.encode(doc._id);
 	 	res.send({'shortUrl': shortUrl});
@@ -47,6 +49,7 @@ app.post('/api/shorten', function(req, res){
 	// No： 先保存长URl，然后编码之后发送  
 	else 
 	{
+		console.log("longUrl is not existed");
 	 	var newUrl = Url({
 	    long_url: longUrl
 	 	});
