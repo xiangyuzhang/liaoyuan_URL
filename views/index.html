@@ -42,17 +42,18 @@
 								<button class = "btn btn-shorten" type ="submit" ng-click="UrlShortener()">SHORTEN</button>				
 								</span>
 								<br>
-								<p>form = {{long_URL}}</p>
 							</div>
 						</div>
 
 						<div class = "col-lg-12">
-							<div id = "link"></div>
+							<div ng-model="short_URL.url"></div>
+							{{ ShortURL.short}}
 						</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>

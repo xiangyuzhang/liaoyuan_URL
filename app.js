@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 设置RESTful API
 // 一，生成页面，get
-app.get('*',function(req, res){
+app.get('/',function(req, res){
 	// 在响应函数里面发送html资源
 	res.sendFile(path.join(__dirname, 'views/index.html'))
 });
@@ -44,7 +44,10 @@ app.post('/api/shorten', function(req, res){
 		console.log("longUrl: " + longUrl + " is existed");
 	// Yes: 直接编码之后发送
 	 	shortUrl = config.webhost + base58.encode(doc._id);
-	 	res.send({'shortUrl': shortUrl});
+	 	console.log("id: " + doc._id);
+	 	console.log("shortUrl: " + shortUrl);
+
+	 	res.send({short: shortUrl});
 	}
 	// No： 先保存长URl，然后编码之后发送  
 	else 
@@ -59,8 +62,11 @@ app.post('/api/shorten', function(req, res){
 	    }
 
 	    shortUrl = config.webhost + base58.encode(newUrl._id);
+	 	console.log("id: " + newUrl._id);
+	 	console.log("shortUrl: " + shortUrl);
 
-	    res.send({'shortUrl': shortUrl});
+	 	res.send({short: shortUrl});
+
 	 	});
 	}
 
