@@ -10,7 +10,7 @@ angular.module('Controller', [])
 				$http.post('/api/shorten', $scope.long_URL)
 					.success(function(data){
 						$log.debug("call Shortener success");
-						$log.debug("acquired short_URL = " + data.ShortURL);
+						$log.debug("acquired short_URL = " + data.short);
 						$scope.ShortURL = data;
 					});
 			}

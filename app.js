@@ -76,7 +76,7 @@ app.post('/api/shorten', function(req, res){
 app.get('/:short_url', function(req,res){
 	// 在响应函数里面执行
 	// 1, 先解码
-	var base58 = req.params.short_url;
+	var base58Id = req.params.short_url;
 	var id = base58.decode(base58Id);
 	// 2，查询数据库是否存在这样的long_url ?
 	Url.findOne({_id: id}, function (err, doc){
