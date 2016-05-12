@@ -14,6 +14,27 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<link href="css/styles.css" rel="stylesheet">
 
+  	<!-- define my style-->
+  	<style>
+  	@font-face
+	{
+	font-family: myFont;
+	src: url('Sansation_Light.ttf')
+	    ,url('Sansation_Light.eot'); /* IE9 */
+	}
+
+	h1
+	{
+	font-family:myFont;
+	}
+	body
+	{
+		background: url(res/fire.gif);
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+
+  	</style>
 
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
@@ -23,7 +44,9 @@
 	<script src="javascripts/core.js"></script> <!-- load our main application -->
 
 </head>
-
+<audio autoplay loop>
+<source src="res/fire.wav" type = "audio/mpeg">
+</audio>
 
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -31,28 +54,28 @@
 		<div class = "site-wrapper-inner">
 			<div class = "main-container">
 				<div class = "inner cover">
-					<span class ="glyphicon glyphicon-link"></span>
-
-					<h1>URL Shortener</h1>
+					<h1 style = "font-family:verdana;">URL SHORTENER</h1>
 					<h4>Xiangyu Zhang</h4>
+						<div class = "col-lg-12">
+							<a href = "{{ ShortURL.short }}" style = "font-size:30px;color:#FFFFF0;font-familty:arial"> &nbsp {{ShortURL.short}} </a>
+						</div>
             			<div class="col-lg-12">
               				<div class="input-group input-group-lg">
-								<input type="text" class="form-control input-lg text-center" placeholder="Paste a link" ng-model="long_URL.url">
+								<input type="text" class="form-control input-lg " placeholder="http://" ng-model="long_URL.url">
 								<span class="input-group-btn">
-								<button class = "btn btn-shorten" type ="submit" ng-click="UrlShortener()">SHORTEN</button>				
+								<button class = "btn btn-shorten" type ="submit" ng-click="UrlShortener()">Shrink！</button>				
 								</span>
 								<br>
 							</div>
 						</div>
 
-						<div class = "col-lg-12">
-							<div ng-model="short_URL.url"></div>
-							{{ ShortURL.short}}
-						</div>
 				</div>
 			</div>
 		</div>
 	</div>
+  <p><a href="http://liaoyuan.io">
+  <img src="res/liaoyuan.jpg" att = "Liaoyuan" width = "66", height = "66" style="position: absolute;bottom:100px;"></a></p>
+
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
